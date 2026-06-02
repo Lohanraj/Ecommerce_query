@@ -1,0 +1,177 @@
+﻿namespace ConsoleApp1
+{
+
+   
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<Appointment> appointments = new List<Appointment>
+            {
+                new Appointment
+                {
+                    AppointmentId = 101,
+                    PatientName = "Rahul",
+                    DoctorName = "Dr. Kumar",
+                    Department = "Cardiology",
+                    AppointmentDate = DateTime.Now.AddDays(2),
+                    Status = "Scheduled",
+                    ConsultationFee = 700
+                },
+
+                new Appointment
+                {
+                    AppointmentId = 102,
+                    PatientName = "shreya",
+                    DoctorName = "Dr. Sugumar",
+                    Department = "Neurology",
+                    AppointmentDate = DateTime.Now.AddDays(-1),
+                    Status = "Completed",
+                    ConsultationFee = 800
+                },
+
+                new Appointment
+                {
+                    AppointmentId = 103,
+                    PatientName = "VijayAntony",
+                    DoctorName = "Dr. Kumar",
+                    Department = "Cardiology",
+                    AppointmentDate = DateTime.Now.AddDays(-3),
+                    Status = "Completed",
+                    ConsultationFee = 600
+                },
+
+                new Appointment
+                {
+                    AppointmentId = 104,
+                    PatientName = "Sanjan",
+                    DoctorName = "Dr. kamalesh",
+                    Department = "Orthopedics",
+                    AppointmentDate = DateTime.Now.AddDays(5),
+                    Status = "Scheduled",
+                    ConsultationFee = 450
+                },
+
+                new Appointment
+                {
+                    AppointmentId = 105,
+                    PatientName = "Kishore",
+                    DoctorName = "Dr. Megna",
+                    Department = "Cardiology",
+                    AppointmentDate = DateTime.Now.AddDays(1),
+                    Status = "Scheduled",
+                    ConsultationFee = 900
+                }
+            };
+
+            // 6. Display all appointments
+            Console.WriteLine("ALL APPOINTMENTS");
+            appointments.ForEach(a => Console.WriteLine(a.GetDetails()));
+
+            // 7. Scheduled appointments
+            Console.WriteLine("\nSCHEDULED APPOINTMENTS");
+            appointments
+                .Where(a => a.Status == "Scheduled")
+                .ToList()
+                .ForEach(a => Console.WriteLine(a.GetDetails()));
+
+            // 8. Completed appointments
+            Console.WriteLine("\nCOMPLETED APPOINTMENTS");
+            appointments
+                .Where(a => a.Status == "Completed")
+                .ToList()
+                .ForEach(a => Console.WriteLine(a.GetDetails()));
+
+            // 9. Cardiology appointments
+            Console.WriteLine("\nCARDIOLOGY APPOINTMENTS");
+            appointments
+                .Where(a => a.Department == "Cardiology")
+                .ToList()
+                .ForEach(a => Console.WriteLine(a.GetDetails()));
+
+            // 10. Consultation fee > 500
+            Console.WriteLine("\nCONSULTATION FEE > 500");
+            appointments
+                .Where(a => a.ConsultationFee > 500)
+                .ToList()
+                .ForEach(a => Console.WriteLine(a.GetDetails()));
+
+            // 11. Sort by appointment date
+            Console.WriteLine("\nSORTED BY APPOINTMENT DATE");
+            appointments
+                .OrderBy(a => a.AppointmentDate)
+                .ToList()
+                .ForEach(a => Console.WriteLine(a.GetDetails()));
+
+            // 12. Search by patient name
+            Console.WriteLine("\nSEARCH PATIENT : VijayAntony");
+
+            var patient = appointments.FirstOrDefault(a =>
+                a.PatientName.Equals("VijayAntony",
+                StringComparison.OrdinalIgnoreCase));
+
+            if (patient != null)
+                Console.WriteLine(patient.GetDetails());
+
+            // 13. Group by department
+            Console.WriteLine("\nGROUP BY DEPARTMENT");
+
+            var departments = appointments.GroupBy(a => a.Department);
+
+            foreach (var group in departments)
+            {
+                Console.WriteLine($"\nDepartment: {group.Key}");
+
+                foreach (var appointment in group)
+                {
+                    Console.WriteLine(appointment.GetDetails());
+                }
+            }
+
+            // 14. Count by status
+            Console.WriteLine("\nCOUNT BY STATUS");
+
+            var statusCount = appointments
+                .GroupBy(a => a.Status)
+                .Select(g => new
+                {
+                    Status = g.Key,
+                    Count = g.Count()
+                });
+
+            foreach (var item in statusCount)
+            {
+                Console.WriteLine($"{item.Status} : {item.Count}");
+            }
+
+            // 15. Total revenue from completed appointments
+            Console.WriteLine("\nTOTAL REVENUE");
+
+            decimal totalRevenue = appointments
+                .Where(a => a.Status == "Completed")
+                .Sum(a => a.ConsultationFee);
+
+            Console.WriteLine($"Revenue = ₹{totalRevenue}");
+
+            // 16. Average consultation fee
+            Console.WriteLine("\nAVERAGE CONSULTATION FEE");
+
+            decimal averageFee = appointments
+                .Average(a => a.ConsultationFee);
+
+            Console.WriteLine($"Average Fee = ₹{averageFee:F2}");
+
+            // 17. Upcoming appointments
+            Console.WriteLine("\nUPCOMING APPOINTMENTS");
+
+            appointments
+                .Where(a => a.AppointmentDate > DateTime.Now)
+                .ToList()
+                .ForEach(a => Console.WriteLine(a.GetDetails()));
+
+            Console.ReadKey();
+        }
+    }
+
+
+}
