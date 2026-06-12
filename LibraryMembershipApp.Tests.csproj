@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>LibraryMembershipApp.Tests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- NUnit packages -->
+    <PackageReference Include="NUnit"                  Version="4.1.0"  />
+    <PackageReference Include="NUnit3TestAdapter"      Version="4.5.0"  />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
+    <!-- Moq -->
+    <PackageReference Include="Moq"                    Version="4.20.70" />
+  </ItemGroup>
+
+  <!-- Reference to the main application project -->
+  <ItemGroup>
+    <ProjectReference Include="..\LibraryMembershipApp\LibraryMembershipApp.csproj" />
+  </ItemGroup>
+
+</Project>
