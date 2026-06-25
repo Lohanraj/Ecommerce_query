@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Departures</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  
+  <header class="airport-header">
+    <div class="airport-header__left">
+      <span class="airport-code">BLR22</span>
+      <span class="airport-name">INTERNATIONAL DEPARTURES</span>
+    </div>
+    <div class="airport-header__right">
+      
+      <div class="clock" id="clock">--:--:--</div>
+      <div class="date" id="date"></div>
+    </div>
+  </header>
+
+  
+  <div class="summary-bar" id="summary-bar">
+    
+  </div>
+
+  
+  <div class="board-header">
+    <span>TIME</span>
+    <span>FLIGHT</span>
+    <span>DESTINATION</span>
+    <span>GATE</span>
+    <span>STATUS</span>
+  </div>
+
+  
+  <div class="board" id="board"></div>
+
+  
+  <div class="controls">
+    <button id="btn-add" class="btn btn--add">＋ Add Departure</button>
+    <button id="btn-reset" class="btn btn--reset">↺ Reset Board</button>
+    <button id="btn-custom-toggle" class="btn btn--custom">✏ Custom Flight</button>
+  </div>
+
+  
+  <div class="custom-form" id="custom-form" hidden>
+    <div class="custom-form__grid">
+      <label>
+        <span>Time (HH:MM)</span>
+        <input type="text" id="f-time" placeholder="14:35" maxlength="5" />
+      </label>
+      <label>
+        <span>Flight No.</span>
+        <input type="text" id="f-flight" placeholder="AA 204" maxlength="8" />
+      </label>
+      <label>
+        <span>Destination</span>
+        <input type="text" id="f-dest" placeholder="New York" maxlength="22" />
+      </label>
+      <label>
+        <span>Gate</span>
+        <input type="text" id="f-gate" placeholder="B12" maxlength="4" />
+      </label>
+    </div>
+    <button id="btn-submit-custom" class="btn btn--add">Add Flight</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
