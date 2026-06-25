@@ -1,0 +1,186 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f5ede3;
+    color:#4b2e1e;
+}
+
+.container{
+    width:90%;
+    max-width:900px;
+    margin:auto;
+}
+
+header{
+    background:#3e2723;
+    padding:16px 0;
+}
+
+.nav-box{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:#d2a679;
+    font-weight:bold;
+}
+
+nav a{
+    color:#d2a679;
+    text-decoration:none;
+    margin-left:22px;
+    font-weight:bold;
+}
+
+.hero{
+    background:#3e2723;
+    color:white;
+    text-align:center;
+    padding:55px 20px;
+}
+
+.tag{
+    color:#d2a679;
+    font-size:13px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+.hero h1{
+    color:#e6c7a1;
+    font-size:42px;
+    margin:12px 0;
+}
+
+.btn{
+    background:#8b5e3c;
+    color:white;
+    padding:10px 24px;
+    border-radius:6px;
+    text-decoration:none;
+    display:inline-block;
+    margin-top:15px;
+    font-weight:bold;
+}
+
+.btn:hover{
+    background:#6f4a2d;
+}
+
+section{
+    padding:35px 0;
+}
+
+h2{
+    margin-bottom:15px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.card{
+    background:white;
+    border:2px solid #8b5e3c;
+    border-radius:8px;
+    padding:18px;
+}
+
+.card h3{
+    color:#6f4a2d;
+    margin:8px 0;
+}
+
+.badge{
+    background:#8b5e3c;
+    color:white;
+    font-size:11px;
+    padding:4px 9px;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+}
+
+th{
+    background:#3e2723;
+    color:#e6c7a1;
+    padding:12px;
+    text-align:left;
+}
+
+td{
+    padding:12px;
+    border-bottom:1px solid #d2b48c;
+}
+
+tr:nth-child(even){
+    background:#f3e5d7;
+}
+
+form{
+    background:white;
+    border:2px solid #8b5e3c;
+    padding:22px;
+    border-radius:8px;
+    max-width:450px;
+}
+
+input,
+textarea{
+    width:100%;
+    padding:11px;
+    margin-bottom:12px;
+    border:1px solid #8b5e3c;
+    border-radius:5px;
+}
+
+button{
+    width:100%;
+    background:#8b5e3c;
+    color:white;
+    border:none;
+    padding:12px;
+    border-radius:5px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#6f4a2d;
+}
+
+footer{
+    background:#3e2723;
+    color:#d2a679;
+    text-align:center;
+    padding:18px;
+}
+
+@media(max-width:768px){
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .nav-box{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .hero h1{
+        font-size:32px;
+    }
+}
